@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  php:
+    #    build: ./php
+    build: ./.dockerconfig
+    ports:
+      - 8989:8000
+    volumes:
+      - ./src:/src
