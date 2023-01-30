@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+#counter {
+  font-family: 'VT323', monospace;
+  font-size: 400px;
+  color: transparent;
+  -webkit-text-stroke: 9px rgb(123, 0, 255);
+  vertical-align: top;
+  text-align: right;
+}
+
+div {
+  font-size: 60px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(123, 0, 255);
+}
+
+#upbtn,
+#downbtn {
+  width: 30%;
+  font-size: 64pt;
+  flex: auto;
+  text-align: center;
+  width: 100%;
+  /* height: 100%; */
+  */
+  /* height: 50px; */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.counter {
+
+}
