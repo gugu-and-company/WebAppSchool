@@ -15,42 +15,35 @@
     <?php
     require_once('Post.php');
 
-    // jsonファイルからPostクラスの配列を取得する
+    // 1.jsonファイルからPostクラスの配列を取得する
     $posts = readPostsFromJson();
 
-    // 画面から入力した値を変数に入れる
+    // 2.画面から入力した値を変数に入れてdata.jsonに保存
     if (isset($_GET["newpost"])) {
         $newpost = $_GET["newpost"];
-        // 現在日時を取得
+        // 2-1.現在日時を取得
         $newdate = new DateTime('now');
         $newdate = $newdate->format('Y-m-d H:i');
 
-        // 入力された投稿と現在日時でPostクラスを作る
+        // 2-2.入力された投稿と現在日時でPostクラスを作る
         $p = new Post($newdate, $newpost);
         array_push($posts, $p);
+        
+        // 2-3.data.jsonに配列を保存
+        savePostsToJson($posts);
     }
 
-    // Post配列を連想配列に詰め替える
-    $ary = array();
-    foreach ($posts as $i) {
-        $ary2 = array('date' => $i->getDatetime(), 'post' => $i->getPost());
-        array_push($ary, $ary2);
-    }
-
-    // data.jsonを配列で書き込み
-    $newjson = json_encode($ary, JSON_UNESCAPED_UNICODE);
-    file_put_contents("data.json", $newjson);
-
-    // それぞれの投稿を取り出す
+    // 3.それぞれの投稿を取り出す
     foreach ($posts as $post2) {
-        //Postクラスのget関数を使って表示
         echo "<div class ='card'>";
         echo "<div class ='dttm'>" .  $post2->getDatetime() . "</br></div>";
         echo "<div class ='post'>" .  $post2->getPost() . "</br></div>";
         echo "</div>";
     }
 
-    // data.jsonを読み込んで配列化
+    /**
+     * data.jsonを読み込んで配列化する関数
+     */
     function readPostsFromJson()
     {
         //data.jsonを開く
@@ -65,6 +58,23 @@
             array_push($arr, $post);
         }
         return $arr;
+    }
+
+    /**
+     * data.jsonに配列を保存する関数
+     */
+    function savePostsToJson($posts)
+    {
+        // Post配列を連想配列に詰め替える
+        $ary = array();
+        foreach ($posts as $i) {
+            $ary2 = array('date' => $i->getDatetime(), 'post' => $i->getPost());
+            array_push($ary, $ary2);
+        }
+
+        // data.jsonを連想配列で書き込み
+        $newjson = json_encode($ary, JSON_UNESCAPED_UNICODE);
+        file_put_contents("data.json", $newjson);
     }
 
     ?>
