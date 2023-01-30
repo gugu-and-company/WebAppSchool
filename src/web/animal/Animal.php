@@ -167,7 +167,7 @@ echo '＜ 動物占いの結果 ＞' . '<br>';
 echo 'あなたは「' . $animal[$number] . '」です';
 ?>
 </br></br>
-<a href="AnimalForm.html">戻る</a>
+<a href="./AnimalForm.html">戻る</a>
 </br></br>
 <a href="../index.html">HOME</a>
 

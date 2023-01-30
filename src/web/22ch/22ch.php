@@ -35,6 +35,9 @@
 
         // 2-3.data.jsonに配列を保存
         savePostsToJson($posts);
+
+        header('Location: ./22ch.php');
+        exit;
     }
 
     // 3.それぞれの投稿を取り出す
