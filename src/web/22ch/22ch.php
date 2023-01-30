@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>22ちゃんねる</title>
 
 </head>
 
 <body>
+    <a href="../index.html">HOME</a>
+    </br></br>
     <a href="index.html">投稿する</a>
+
     <?php
     require_once('Post.php');
 
@@ -79,6 +82,8 @@
 
     ?>
     <a href="index.html">投稿する</a>
+    </br></br>
+    <a href="../index.html">HOME</a>
 </body>
 
 </html>
