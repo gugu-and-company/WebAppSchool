@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>動物占い</title>
+
+</head>
+
+<body>
 <?php
 
 $year = $_GET['year'];
@@ -152,3 +165,11 @@ if ($number > 60) {
 }
 echo '＜ 動物占いの結果 ＞' . '<br>';
 echo 'あなたは「' . $animal[$number] . '」です';
+?>
+</br></br>
+<a href="AnimalForm.html">戻る</a>
+</br></br>
+<a href="../index.html">HOME</a>
+
+</body>
+</html>
