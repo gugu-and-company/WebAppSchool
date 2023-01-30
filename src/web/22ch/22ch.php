@@ -11,9 +11,9 @@
 </head>
 
 <body>
+    <h1>22ちゃんねる</h1>
     <a href="../index.html">HOME</a>
-    </br></br>
-    <a href="index.html">投稿する</a>
+    </br>
 
     <?php
     require_once('Post.php');
@@ -45,6 +45,7 @@
         echo "<div class ='post'>" .  $post2->getPost() . "</br></div>";
         echo "</div>";
     }
+
 
     /**
      * data.jsonを読み込んで配列化する関数
@@ -83,8 +84,14 @@
     }
 
     ?>
-    <a href="index.html">投稿する</a>
+
+    <form action="" method="get">
+        <p>お名前　<input type="text" name="name"></p>
+        <p><textarea name="newpost" rows="4" cols="40"></textarea></p>
+        <p><input type="submit" name="submitBtn" value="書き込む"></p>
+    </form>
     </br></br>
+
     <a href="../index.html">HOME</a>
 </body>
 
