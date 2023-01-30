@@ -23,15 +23,16 @@
 
     // 2.画面から入力した値を変数に入れてdata.jsonに保存
     if (isset($_GET["newpost"])) {
+        $newname = $_GET["name"];
         $newpost = $_GET["newpost"];
         // 2-1.現在日時を取得
         $newdate = new DateTime('now');
         $newdate = $newdate->format('Y-m-d H:i');
 
         // 2-2.入力された投稿と現在日時でPostクラスを作る
-        $p = new Post($newdate, $newpost);
+        $p = new Post($newname, $newdate, $newpost);
         array_push($posts, $p);
-        
+
         // 2-3.data.jsonに配列を保存
         savePostsToJson($posts);
     }
@@ -39,6 +40,7 @@
     // 3.それぞれの投稿を取り出す
     foreach ($posts as $post2) {
         echo "<div class ='card'>";
+        echo "<div class ='dttm'>" .  $post2->getName() . "</br></div>";
         echo "<div class ='dttm'>" .  $post2->getDatetime() . "</br></div>";
         echo "<div class ='post'>" .  $post2->getPost() . "</br></div>";
         echo "</div>";
@@ -57,7 +59,7 @@
 
         $arr = array();
         foreach ($json as $j) {
-            $post = new Post($j['date'], $j['post']);
+            $post = new Post($j['name'], $j['date'], $j['post']);
             array_push($arr, $post);
         }
         return $arr;
@@ -71,7 +73,7 @@
         // Post配列を連想配列に詰め替える
         $ary = array();
         foreach ($posts as $i) {
-            $ary2 = array('date' => $i->getDatetime(), 'post' => $i->getPost());
+            $ary2 = array('name' => $i->getName(), 'date' => $i->getDatetime(), 'post' => $i->getPost());
             array_push($ary, $ary2);
         }
 

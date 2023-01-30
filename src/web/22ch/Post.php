@@ -2,11 +2,13 @@
 
 class Post
 {
+  private $name;
   private $dttm;
   private $post;
 
-  public function __construct($dttm, $post)
+  public function __construct($name, $dttm, $post)
   {
+    $this->setName($name);
     $this->setDatetime($dttm);
     $this->setPost($post);
   }
@@ -18,16 +20,26 @@ class Post
     $this->post = $post;
   }
 
-  public function setPost($post)
+  public function setName($name)
   {
-    $this->post = $post;
+    $this->name = $name;
   }
-
+  
   public function setDatetime($dttm)
   {
     $this->dttm = $dttm;
   }
-
+  
+  public function setPost($post)
+  {
+    $this->post = $post;
+  }
+  
+  public function getName()
+  {
+    return $this->name;
+  }
+  
   public function getDatetime()
   {
     return $this->dttm;
@@ -37,4 +49,5 @@ class Post
   {
     return $this->post;
   }
+
 }
